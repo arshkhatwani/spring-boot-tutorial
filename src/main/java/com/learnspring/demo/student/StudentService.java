@@ -4,18 +4,20 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
 
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public List<Student> getStudents() {
-        Student s1 = Student.builder().id(1L).name("Arsh").email("ak@example.com").age(22)
-                .dob(LocalDate.of(2001, Month.FEBRUARY, 2)).build();
-
-        Student s2 = Student.builder().id(2L).name("Sparsh").email("sk@example.com").age(17)
-                .dob(LocalDate.of(2005, Month.SEPTEMBER, 16)).build();
-
-        return List.of(s1, s2);
+        return studentRepository.findAll();
     }
 }
