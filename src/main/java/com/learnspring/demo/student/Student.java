@@ -2,11 +2,15 @@ package com.learnspring.demo.student;
 
 import java.time.LocalDate;
 
-public class Student {
-    private Long id;
-    private String name;
-    private String email;
-    private LocalDate dob;
-    private Integer age;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Builder
+public class Student {
+    @Getter @Setter private Long id;
+    @Getter @Setter private String name;
+    @Getter @Setter private String email;
+    @Getter @Setter private LocalDate dob;
+    @Getter @Setter private Integer age;
 }
